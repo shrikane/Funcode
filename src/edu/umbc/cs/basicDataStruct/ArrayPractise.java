@@ -12,8 +12,10 @@ public class ArrayPractise {
 	}
 
 	/***
-	 * checks of string contains duplicate characters 
-	 * @param input test string 
+	 * checks of string contains duplicate characters
+	 * 
+	 * @param input
+	 *            test string
 	 * @return true if contains duplicate characters false else
 	 */
 	public boolean checkDuplicateWithExtraSpace(String input) {
@@ -31,7 +33,9 @@ public class ArrayPractise {
 
 	/***
 	 * Calculates length of c style \0 terminated string
-	 * @param input input string
+	 * 
+	 * @param input
+	 *            input string
 	 * @return length of input string
 	 */
 	public int getLength(char[] input) {
@@ -45,7 +49,9 @@ public class ArrayPractise {
 
 	/**
 	 * Reverses null terminated c style string
-	 * @param input input string to be reveresed 
+	 * 
+	 * @param input
+	 *            input string to be reveresed
 	 * @return reversed string
 	 */
 	char[] reverse(char[] input) {
@@ -80,7 +86,67 @@ public class ArrayPractise {
 				return false;
 			}
 		}
-
 		return true;
 	}
+
+	/**
+	 * Replace all spaces by '%20'
+	 * 
+	 * @param input
+	 *            input string
+	 * @param length
+	 *            true length of string
+	 * @return
+	 */
+	char[] replaceAll(char[] input, int length) {
+
+		int spaceCount = 0;
+		for (int i = 0; i < length; i++) {
+			if (input[i] == ' ') {
+				spaceCount++;
+			}
+		}
+
+		int newLength = length + 2 * spaceCount;
+		for (int i = length - 1; i >= 0; i--) {
+			if (input[i] == ' ') {
+				input[--newLength] = '0';
+				input[--newLength] = '2';
+				input[--newLength] = '%';
+			} else {
+				input[--newLength] = input[i];
+			}
+		}
+		return input;
+	}
+
+	/**
+	 * Compress string for e.g aabbccd =a2b2b2d1 
+	 * @param input input string
+	 * @return if compressed string length is less than orignal string then compressed string else 
+	 * 		   orignal string	
+	 */
+	String basicStringCompression(String input) {
+		StringBuffer br = new StringBuffer();
+		int counter = 1;
+		int i = 0;
+		while (i < input.length() - 1) {
+			if (input.charAt(i) == input.charAt(i + 1)) {
+				counter++;
+			} else {
+				br.append("" + input.charAt(i) + "" + counter);
+				counter = 1;
+			}
+			i++;
+		}
+		br.append("" + input.charAt(i) + "" + counter);
+		String outString = br.toString();
+		if (outString.length() <= input.length()) {
+			return outString;
+		} else {
+			return input;
+		}
+
+	}
+
 }

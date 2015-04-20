@@ -43,4 +43,22 @@ public class ArrayTest {
 		 assertEquals(false,test.isPermutation(testString,"pqr"));
 		 assertEquals(true,test.isPermutation(testString,""));
 	}
+	
+	@Test
+	public void testInplaceReplacement(){
+		String testString = "a b c    ";
+		String testString1 = "this is test string1 and        ";
+		String testString2 = "   ";
+		 assertEquals(true,new String(test.replaceAll(testString.toCharArray(), 5)).equalsIgnoreCase("a%20b%20c"));
+		 assertEquals(true,new String(test.replaceAll(testString1.toCharArray(), 24)).equalsIgnoreCase("this%20is%20test%20string1%20and"));
+		 assertEquals(true,new String(test.replaceAll(testString2.toCharArray(), 1)).equalsIgnoreCase("%20"));
+	}
+	
+	@Test
+	public void StringCompressionTest(){
+		String testString = "aabbccddde";
+		String testString1 = "abc";
+		assertEquals(true, "a2b2c2d3e1".equals(test.basicStringCompression(testString)));
+		assertEquals(true, "abc".equals(test.basicStringCompression(testString1)));
+	}
 }
