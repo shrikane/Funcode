@@ -148,5 +148,24 @@ public class ArrayPractise {
 		}
 
 	}
+	
+	
+	boolean isRoatation(String input,String test){
+		char [] testChars = test.toCharArray();
+		int i=0;
+		for (;i<testChars.length;i++) {
+			if(input.charAt(0) ==  testChars[i]){
+				break;
+			}
+		}
+		
+		char [] roatetedChars = new char[testChars.length];
+		for(int j=0;j<testChars.length;j++){
+			roatetedChars[j] = testChars[i];
+			i = (i+1)%testChars.length;
+		}
+		
+		return new String(roatetedChars).equals(input.substring(0,testChars.length));
+	}
 
 }

@@ -61,4 +61,9 @@ public class ArrayTest {
 		assertEquals(true, "a2b2c2d3e1".equals(test.basicStringCompression(testString)));
 		assertEquals(true, "abc".equals(test.basicStringCompression(testString1)));
 	}
+	
+	@Test
+	public void testIsroatation(){
+		assertEquals(true, test.isRoatation("waterbottle", "erbottlewat"));
+	}
 }
