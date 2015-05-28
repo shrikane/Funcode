@@ -10,6 +10,19 @@ public class ArrayTest {
 
 	ArrayPractise test = new ArrayPractise();
 	
+	
+	@Test
+	public void testRotate() {
+		int [] input = {1,2,3,4,5,6,7};
+		int [] expected = {5,6,7,1,2,3,4};
+		int [] actuals =test.rotate(input, 3);
+		for (int i : actuals) {
+			System.out.println(i);
+		}
+		assertArrayEquals(expected,actuals );
+	}
+	
+	
 	@Test
 	public void uniqueChars() {
 		String testString = "aAbCde";

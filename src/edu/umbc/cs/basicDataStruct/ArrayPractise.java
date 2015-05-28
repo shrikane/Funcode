@@ -2,6 +2,7 @@ package edu.umbc.cs.basicDataStruct;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,6 +47,45 @@ public class ArrayPractise {
 		}
 		return length;
 	}
+	
+	
+	
+	/**
+	 * Rotate an array of n elements to the right by k steps. 
+	 * For example, with n = 7 and k = 3, the array [1,2,3,4,5,6,7] is rotated to [5,6,7,1,2,3,4].
+	 * @param input
+	 * @param k
+	 * @return
+	 */
+	public  int [] rotate(int[] arr, int order) {
+		order = order % arr.length;
+	 
+		if (arr == null || order < 0) {
+			throw new IllegalArgumentException("Illegal argument!");
+		}
+	
+		//length of first part
+		int a = arr.length - order; 
+	 
+		reverse(arr, 0, a-1);
+		reverse(arr, a, arr.length-1);
+		reverse(arr, 0, arr.length-1);
+	 return arr;
+	}
+	 
+	public  void reverse(int[] arr, int left, int right){
+		if(arr == null || arr.length == 1) 
+			return;
+	 
+		while(left < right){
+			int temp = arr[left];
+			arr[left] = arr[right];
+			arr[right] = temp;
+			left++;
+			right--;
+		}	
+	}
+	
 
 	/**
 	 * Reverses null terminated c style string
@@ -166,6 +206,14 @@ public class ArrayPractise {
 		}
 		
 		return new String(roatetedChars).equals(input.substring(0,testChars.length));
+	}
+	
+	public static void main(String[] args) {
+		int a= '0';
+		int b= '0';
+		int x = a ^ b;
+		
+		System.out.println(x);
 	}
 
 }
